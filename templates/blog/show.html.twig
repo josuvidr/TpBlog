@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <article>
+        <h2>{{ article.titre }}</h2>
+        <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie {{ article.category.titre }}</div>
+        <div class ="content">
+            <img src="{{ article.image }}" alt="">
+            <br><br>
+            {{ article.content | raw }}
+        </div>
+    </article>
+
+    {% if is_granted('ROLE_EDITOR') %}
+        <a href="{{ path('blog_edit', { 'id': article.id}) }}" class="btn btn-success">Modifier l'article</a>
+        <br><br><br><br>
+    {% endif %}
+    <br><br>
+    <section id="commentaires">
+        <h3> {{ article.comments | length }} Commentaire(s) </h3>
+         {% for comment in article.comments %}
+        <div class="comment">
+            <div class="row">
+                <div class="col-3">
+                    {{ comment.auteur }} :  <small>{{ comment.createdAt | date('d/m/Y à H:i') }}</small>
+                </div>
+                <div class="col">
+                    {{ comment.content | raw }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {{ form_start(commentForm) }}
+            {{ form_row(commentForm.content, {'attr':{'placeholder': "Votre commentaire"}}) }}
+            <button type="submit" class="btn btn-success">Valider le commentaire</button>
+            {{ form_end(commentForm) }}
+            <br><br><br><br>
+            {% else %}
+                <br> <br>
+                <h5>Vous ne pouvez pas commenter, sans être connecté.</h5>
+                <a href="{{ path('security_login')  }}" class="btn btn-primary">Connexion</a>
+                <br> <br>
+        {% endif %}
+    </section>
+
+{% endblock %}

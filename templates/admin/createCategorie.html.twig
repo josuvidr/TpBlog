@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% form_theme categorieForm 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <br><br>
+    {{ form_start(categorieForm) }}
+    {{ form_widget(categorieForm) }}
+
+    <button type="submit" class="btn btn-success">Ajouter la catégorie</button>
+
+    {{form_end(categorieForm) }}
+
+{% endblock %}

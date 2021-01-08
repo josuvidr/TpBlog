@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<h1>Hello BlogController!</h1>{% endblock %}
+
+{% block body %}
+
+        <section class="section lb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                        <div class="page-wrapper">
+                            <div class="blog-custom-build">
+                                {% for article in articles %}
+                                <div class="blog-box wow fadeIn">
+                                    <div class="post-media">
+                                        <a  title="">
+                                            <img src="{{ article.image }}" height="460" width="800" alt="" class="img-fluid">
+                                            <div class="hovereffect">
+                                                <span></span>
+                                            </div>
+                                            <!-- end hover -->
+                                        </a>
+                                    </div>
+
+                                    <!-- end media -->
+                                    <div class="blog-meta big-meta text-center">
+                                        <section class="articles">
+                                                <h4><a  title="">{{article.titre}}</a></h4>
+                                                <h3><a title="">Ecrit le {{ article.createdAt | date('d/m/Y')}} à {{ article.createdAt | date('H:i')}}</a></h3>
+                                                    <div class ="content">
+                                                       <p>{{ article.content |slice(0, 100) | raw }} ... </p>
+                                                    </div>
+                                                <small><a title="">Catégorie {{ article.category.titre }}</a></small>
+                                            <a href="{{ path('blog_show',{'id' : article.id}) }}" class="btn btn-primary">Lire la suite</a>
+                                        </section>
+                                    </div><!-- end meta -->
+                                    {% endfor %}
+                                </div><!-- end blog-box -->
+
+                                <hr class="invis">
+                            </div>
+                        </div>
+
+                        <hr class="invis">
+
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+
+        <div class="dmtop">Scroll to Top</div>
+
+    </div><!-- end wrapper -->
+
+    <!-- Core JavaScript
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/animate.js"></script>
+    <script src="js/custom.js"></script>
+
+    </body>
+    </html>
+
+{% endblock %}
