@@ -48,6 +48,11 @@ Il faut également, lors de la Première utilisation, s'inscrire et dans PhpMyAd
 ```bash
 [] et mettre ["ROLE_ADMIN"]
 ```
+Le nom de la base de donnée : 
+```sql
+BlogDataBase
+```
+
 
 
 ## Liens CSS 
