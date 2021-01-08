@@ -60,7 +60,8 @@ Pour le Blog
 ```bash
 https://www.free-css.com/free-css-templates/page244/markedia
 ```
-
+## Aide
+Si vous n'arrivez pas à ouvrir le projet où s'il y a des parties qui ne fonctionnent pas, n'hésitez pas à me contacter par e-mail ou sur Discord. 
 
 ## License
 Josué Vidrequin FISA 3 INSA Hauts-De-France 
